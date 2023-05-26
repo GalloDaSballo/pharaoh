@@ -1,9 +1,15 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import styles from "@/styles/Home.module.css";
+import TextRegex from "@/components/TextRegex";
+import { SHORTCUTS } from "@/utils/shortcut";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
+
+const getWords = (text: string): string[] => {
+  return text.split(" ");
+};
 
 export default function Home() {
   return (
@@ -14,9 +20,19 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <div>
+        <div>
+          <h2>LEGEND</h2>
+          {Object.keys(SHORTCUTS).map((key) => (
+            <div>
+              {key} - {SHORTCUTS[key]}
+            </div>
+          ))}
+        </div>
+      </div>
       <main className={`${styles.main} ${inter.className}`}>
-        
+        <TextRegex onDone={(v, c) => alert("v", v)} />
       </main>
     </>
-  )
+  );
 }
