@@ -22,4 +22,6 @@ Once you have the headers and scores
 You can use string-regex to process the reports, saving you tons of time
 
 
+## Customized Workflow
 
+Change `SHORTCUTS` in `utils/shortcut.ts` to help you speed things up
