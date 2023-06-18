@@ -1,4 +1,4 @@
-export default function CopyToClipboardButton({ text }) {
+export default function CopyToClipboardButton({ text }: { text: string }) {
   const handleClick = async () => {
     await navigator.clipboard.writeText(text);
   };

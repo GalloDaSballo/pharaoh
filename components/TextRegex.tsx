@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import fuzzy, { FilterResult } from "fuzzy";
 import { applyShortcut } from "@/utils/shortcut";
-import CopyToClipboard from "./CopyToClipBoard";
+import CopyToClipboard from "./CopyToClipboard";
 import CopyToClipboardButton from "./CopyToClipboardButton";
 
 const getHeaderValues = (
@@ -17,7 +17,10 @@ const getHeaderValues = (
   return res;
 };
 
-const makeText = (headers, scores): string => {
+const makeText = (
+  headers: FilterResult<string>[],
+  scores: string[]
+): string => {
   let init = "";
   for (let i = 0; i < headers.length; i++) {
     init += headers[i].string;
@@ -32,7 +35,11 @@ const makeText = (headers, scores): string => {
 // ON backspace
 // https://bobbyhadz.com/blog/react-detect-backspace-key
 
-export default function TextRegex({ onDone }) {
+export default function TextRegex({
+  onDone,
+}: {
+  onDone: (val: any, scores: any) => void;
+}) {
   // ID of this Thingy
   // Store the whole thing as JSON
   // Button to check unique judging
@@ -48,13 +55,18 @@ export default function TextRegex({ onDone }) {
 
   const [scores, setScores] = useState({});
 
-  const updateScores = (scores, index, value) => {
+  const updateScores = (scores: any, index: number, value: string) => {
     if (done) {
       return;
     }
     const scoresCopy = { ...scores };
     scoresCopy[index] = value;
     setScores(scoresCopy);
+  };
+
+  // ADD TODOs so we can export quickly
+  const addTodosOnRest = (scores, index) => {
+    const { length } = val;
   };
 
   const finalize = () => {
@@ -122,6 +134,8 @@ export default function TextRegex({ onDone }) {
           <CopyToClipboardButton text={makeText(val, scores)} />
         </>
       )}
+      <h2>COPY</h2>
+      <CopyToClipboardButton text={makeText(val, scores)} />
     </div>
   );
 }

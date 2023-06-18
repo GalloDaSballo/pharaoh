@@ -4,6 +4,8 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import TextRegex from "@/components/TextRegex";
 import { SHORTCUTS } from "@/utils/shortcut";
+import { save } from "@/utils/ls";
+import TextCompare from "@/components/TextCompare";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,6 +14,12 @@ const getWords = (text: string): string[] => {
 };
 
 export default function Home() {
+  const saveToStorage = (headers, scores) => {
+    save({
+      headers,
+      scores,
+    });
+  };
   return (
     <>
       <Head>
@@ -31,8 +39,11 @@ export default function Home() {
         </div>
       </div>
       <main className={`${styles.main} ${inter.className}`}>
-        <TextRegex onDone={(v, c) => alert("v", v)} />
+        <TextRegex onDone={saveToStorage} />
       </main>
+      <div>
+        <TextCompare />
+      </div>
     </>
   );
 }
