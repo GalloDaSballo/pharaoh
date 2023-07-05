@@ -19,9 +19,22 @@ export default function Home() {
       </Head>
       <div>
         <h2>Tutorial</h2>
+        <p>Video walkthrough soon</p>
 
-        <Link href="/scrape">Scrape Findings from MD</Link>
-        <Link href="/score">Judge Findings after Scraping</Link>
+        <div>
+          <h2>I need to Scrape MD files</h2>
+          <p>Use this page to use Regex to scrape headers and score them</p>
+          <p>Copy them into an MD file to use them with `string-regex`</p>
+          <div>
+         <Link href="/scrape">Scrape Findings from MD</Link>
+         </div>
+        </div>
+        <div>
+        <h2>I need to Score MD files</h2>
+          <p>Use this page to Score already scraped (and auto-judged files)</p>
+          <p>Use `string-regex` to apply the Knowledge Base, then manually finish judging</p>
+          <Link href="/score">Judge Findings after Scraping</Link>
+        </div>
       </div>
     </>
   );
