@@ -17,15 +17,18 @@ const getHeaderValues = (
   return res;
 };
 
+/**
+ * NOTE: This is different from the one in TextScorer
+ */
 const makeText = (
   headers: FilterResult<string>[],
-  scores: string[]
+  scores: KeyScore
 ): string => {
   let init = "";
   for (let i = 0; i < headers.length; i++) {
     init += headers[i].string;
     init += "\n";
-    init += scores[i];
+    init += scores[i] === undefined ? "TODO" : scores[i];
     init += "\n";
   }
 
@@ -35,7 +38,11 @@ const makeText = (
 // ON backspace
 // https://bobbyhadz.com/blog/react-detect-backspace-key
 
-export default function TextRegex({
+interface KeyScore {
+  [key: number]: string;
+}
+
+export default function TextScraper({
   onDone,
 }: {
   onDone: (val: any, scores: any) => void;
@@ -53,20 +60,19 @@ export default function TextRegex({
     return getHeaderValues(text, header);
   }, [text, header]);
 
-  const [scores, setScores] = useState({});
+  const [scores, setScores] = useState<KeyScore>({});
 
-  const updateScores = (scores: any, index: number, value: string) => {
+  const updateScores = (
+    scoresToUpdate: KeyScore,
+    index: number,
+    value: string
+  ) => {
     if (done) {
       return;
     }
-    const scoresCopy = { ...scores };
+    const scoresCopy = { ...scoresToUpdate };
     scoresCopy[index] = value;
     setScores(scoresCopy);
-  };
-
-  // ADD TODOs so we can export quickly
-  const addTodosOnRest = (scores, index) => {
-    const { length } = val;
   };
 
   const finalize = () => {

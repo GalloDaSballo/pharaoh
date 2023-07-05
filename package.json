@@ -12,6 +12,7 @@
     "@types/node": "20.2.4",
     "@types/react": "18.2.7",
     "@types/react-dom": "18.2.4",
+    "c4-string-regex": "^1.1.0",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.4",
     "fastest-levenshtein": "^1.0.16",
@@ -24,6 +25,7 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "^13.4.7",
     "eslint-config-airbnb-typescript-prettier": "^5.0.0"
   }
 }

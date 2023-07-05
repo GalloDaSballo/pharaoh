@@ -1,14 +1,23 @@
+// @ts-nocheck
+
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import Link from "next/link";
 import styles from "@/styles/Home.module.css";
 import TextScorer from "@/components/TextScorer";
 import { SHORTCUTS } from "@/utils/shortcut";
 import { save } from "@/utils/ls";
 import TextCompare from "@/components/TextCompare";
 
+const inter = Inter({ subsets: ["latin"] });
+
 export default function Home() {
+  const saveToStorage = (headers: string, scores) => {
+    save({
+      headers,
+      scores,
+    });
+  };
   return (
     <>
       <Head>
@@ -18,10 +27,20 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        <h2>Tutorial</h2>
-
-        <Link href="/scrape">Scrape Findings from MD</Link>
-        <Link href="/score">Judge Findings after Scraping</Link>
+        <div>
+          <h2>LEGEND</h2>
+          {Object.keys(SHORTCUTS).map((key) => (
+            <div>
+              {key} - {SHORTCUTS[key]}
+            </div>
+          ))}
+        </div>
+      </div>
+      <main className={`${styles.main} ${inter.className}`}>
+        <TextScorer onDone={saveToStorage} />
+      </main>
+      <div>
+        <TextCompare />
       </div>
     </>
   );

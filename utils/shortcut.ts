@@ -4,11 +4,14 @@ export const SHORTCUTS = {
   "3": "NC",
   "4": "TODO",
   "\\": "I",
-  "r": "-3"
-}
+  r: "-3",
+};
 
 export const applyShortcut = (val: string) => {
-  if(SHORTCUTS[val]) {
-    return SHORTCUTS[val]
-  } else {return val}
-}
+  // @ts-ignore // Safe because we check for falsy values
+  if (SHORTCUTS[val]) {
+    // @ts-ignore // Safe because we check for falsy values
+    return SHORTCUTS[val];
+  }
+  return val;
+};
