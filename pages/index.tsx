@@ -26,14 +26,14 @@ export default function Home() {
           <p>Use this page to use Regex to scrape headers and score them</p>
           <p>Copy them into an MD file to use them with `string-regex`</p>
           <div>
-         <Link href="/scrape">Scrape Findings from MD</Link>
+         <Link href="/scrape"><button>Scrape Findings from MD</button></Link>
          </div>
         </div>
         <div>
         <h2>I need to Score MD files</h2>
           <p>Use this page to Score already scraped (and auto-judged files)</p>
           <p>Use `string-regex` to apply the Knowledge Base, then manually finish judging</p>
-          <Link href="/score">Judge Findings after Scraping</Link>
+          <Link href="/score"><button>Judge Findings after Scraping</button></Link>
         </div>
       </div>
     </>
