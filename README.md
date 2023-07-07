@@ -1,11 +1,19 @@
 # Pharaoh
 
+
 It sounds similar to Fair
 
 Helps you scrape bot titles
 ## Getting Started
 
 Run with `yarn dev`
+
+# Documentation
+
+Full docs and usage with `string-regex`:
+
+https://docs.google.com/document/d/13jJ-hLRqrC9fLYsA_b6pJ927mQY_uBHObEI7mSWPFOk/edit?usp=sharing
+
 
 ## Using
 
