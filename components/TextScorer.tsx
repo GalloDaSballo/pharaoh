@@ -3,6 +3,7 @@ import { getHeadersAndScores } from "c4-string-regex/lib";
 import { applyShortcut } from "@/utils/shortcut";
 import CopyToClipboard from "./CopyToClipboard";
 import CopyToClipboardButton from "./CopyToClipboardButton";
+import ShowCount from "./ShowCount";
 
 /**
  * NOTE: This is different from the one in TextScraper
@@ -74,6 +75,10 @@ export default function TextScorer() {
       )}
       <h2>COPY</h2>
       <CopyToClipboardButton text={makeText(headersAndScores)} />
+
+
+      <h2>SCORE</h2>
+      <ShowCount headersAndScores={headersAndScores} />
     </div>
   );
 }
